@@ -1,6 +1,6 @@
 import { systemPreferences, BrowserWindow, dialog } from 'electron';
 import { pathExistsSync, mkdirSync, writeFileSync } from 'fs-extra';
-import macosVersion from 'macos-version';
+import { isMacOSVersionGreaterThanOrEqualTo } from 'macos-version';
 import { dirname } from 'path';
 // @ts-ignore
 import { askForScreenCaptureAccess } from 'node-mac-permissions';
@@ -9,7 +9,7 @@ import { userDataPath } from '../environment-remote';
 const debug = require('../preload-safe-debug')('Ferdium:macOSPermissions');
 
 const isExplicitScreenCapturePermissionReqd =
-  macosVersion.isGreaterThanOrEqualTo('10.15');
+  isMacOSVersionGreaterThanOrEqualTo('10.15');
 debug(
   `Should check explicitly for screen-capture permissions: ${isExplicitScreenCapturePermissionReqd}`,
 );

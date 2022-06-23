@@ -1,5 +1,5 @@
 import { cpus } from 'os';
-import macosVersion from 'macos-version';
+import { macOSVersion } from 'macos-version';
 import { chrome } from 'useragent-generator';
 import {
   chromeVersion,
@@ -11,7 +11,7 @@ import {
 } from '../environment';
 
 function macOS() {
-  const version = macosVersion() || '';
+  const version = macOSVersion() || '';
   let cpuName = cpus()[0].model.split(' ')[0];
   if (cpuName && /\(/.test(cpuName)) {
     cpuName = cpuName.split('(')[0];
